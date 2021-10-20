@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,21 @@
     <title>Login</title>
 </head>
 <style>
-    .login{
+    .login {
         margin: 50px;
         text-align: center;
     }
-    .log{
+
+    .log {
         margin: 20px;
         text-align: center;
     }
+    .logBtn{
+        text-align: center;
+        margin-top: 50px;
+    }
 </style>
+
 <body>
 
     <h1 class="login">Login</h1>
@@ -32,8 +39,22 @@
         <label for="email">Email Add.:</label>
         <input type="email" id="email">
     </div>
+    <div class="logBtn">
+        <button>Login</button>
+    </div>
 </body>
 <script>
-    
+    function getData() {
+        return fetch("https://reqres.in/api/users?page=1")
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .then(res => matchData)
+    }
+    window.addEventListener("load", getData)
+
+    function matchData(){
+        
+    }
 </script>
+
 </html>
