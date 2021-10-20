@@ -17,7 +17,8 @@
         margin: 20px;
         text-align: center;
     }
-    .logBtn{
+
+    .logBtn {
         text-align: center;
         margin-top: 50px;
     }
@@ -40,21 +41,28 @@
         <input type="email" id="email">
     </div>
     <div class="logBtn">
-        <button>Login</button>
+        <button id="loginBtn">Login</button>
     </div>
 </body>
 <script>
-    function getData() {
-        return fetch("https://reqres.in/api/users?page=1")
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .then(res => matchData)
-    }
-    window.addEventListener("load", getData)
+    var btn = document.getElementById("loginBtn")
 
-    function matchData(){
-        
+    fetch("https://reqres.in/api/users?page=1")
+        .then(res => res.json())
+        .then(res => matchData(res))
+
+    function matchData(res) {
+        const Email = document.getElementById("email")
+
+        for (let i = 0; i < res.data.length; i++) {
+            if (res.data[i].email == Email.value) {
+                console.log("done")
+            }
+        }
+        console.log(Email.value)
     }
+
+    btn.addEventListener('click', matchData)
 </script>
 
 </html>
